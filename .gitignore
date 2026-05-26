@@ -1,0 +1,25 @@
+# Project source / dev artifacts — not for deployment
+documents/
+workflow/
+plan/
+prompts/
+feedbacks/
+memory/
+.claude/
+CLAUDE.md
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Logs
+*.log
+
+# Node / build (if ever added)
+node_modules/
+dist/
+build/
+.env
+.env.local
