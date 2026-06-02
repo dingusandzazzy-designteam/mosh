@@ -828,6 +828,56 @@
   let current = 0;
   let busy = false;
 
+  /* ── HubSpot Forms API integration ──────────────────────────────────
+     Qualifies the EXISTING contact (HubSpot dedups by email — no new
+     records). Identity arrives from the email CTA link: ?email=&firstname=.
+     SETUP: after creating the form in HubSpot (portal 47198750), replace
+     __FORM_GUID__ below with the real Form GUID. Until then, submission is
+     skipped automatically and the quiz still works as a quiz. */
+  const HS_PORTAL_ID = '47198750';
+  const HS_FORM_GUID = '1b1a1b90-8252-4981-8691-287211724fc4';
+
+  function hsGetParam(name) {
+    return new URLSearchParams(window.location.search).get(name) || '';
+  }
+  function hsGetCookie(name) {
+    const m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return m ? m.pop() : '';
+  }
+  const hsEmail     = hsGetParam('email');
+  const hsFirstName = hsGetParam('firstname');
+
+  function hsSubmitResult(score, riskLabel) {
+    /* No email (page opened directly) or form not wired yet → skip silently. */
+    if (!hsEmail || HS_FORM_GUID === '__FORM_GUID__') return;
+
+    const answersJson = JSON.stringify(
+      Object.keys(answers).reduce(function(acc, k){ acc['q' + k] = answers[k]; return acc; }, {})
+    );
+    const now = new Date();
+    const utcMidnight = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+
+    const fields = [
+      { name: 'email',                   value: hsEmail },
+      { name: 'jd_audit_score',          value: String(score) },
+      { name: 'jd_audit_risk',           value: riskLabel },
+      { name: 'jd_audit_completed',      value: 'true' },
+      { name: 'jd_audit_completed_date', value: String(utcMidnight) },
+      { name: 'jd_audit_answers',        value: answersJson }
+    ];
+    if (hsFirstName) fields.push({ name: 'firstname', value: hsFirstName });
+
+    const context = { pageUri: window.location.href, pageName: document.title };
+    const hutk = hsGetCookie('hubspotutk');
+    if (hutk) context.hutk = hutk;
+
+    fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + HS_PORTAL_ID + '/' + HS_FORM_GUID, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fields: fields, context: context })
+    }).catch(function(err){ console.warn('HubSpot submit failed:', err); });
+  }
+
   function pick(qNum, value, el) {
     const group = el.closest('[role="radiogroup"]');
     group.querySelectorAll('.answer-card').forEach(c => c.setAttribute('aria-checked','false'));
@@ -937,6 +987,9 @@
       '<img src="' + imgSrc + '" alt="' + label + ' illustration" ' +
       'onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">' +
       '<div class="illus-placeholder" style="display:none">[Illustration]</div>';
+
+    /* Fire-and-forget: stamp the result on the existing HubSpot contact. */
+    hsSubmitResult(score, label);
 
     goTo(4);
   }
