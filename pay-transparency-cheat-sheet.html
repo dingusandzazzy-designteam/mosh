@@ -138,28 +138,26 @@
     .callout strong { font-family: 'Open Sans', sans-serif; font-weight: 700; }
 
     /* ── Section divider / headings ── */
-    .section { margin-top: 56px; }
-    .section-eyebrow {
-      font-family: 'Open Sans', sans-serif;
-      font-weight: 600;
-      font-size: 12px;
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-      color: var(--brand);
-      margin-bottom: 8px;
+    .section {
+      margin-top: 44px;
+      padding-top: 44px;
+      border-top: 1px solid var(--brand-light);
     }
     .section-title {
       font-family: 'Open Sans', sans-serif;
       font-weight: 700;
-      font-size: 26px;
+      font-size: 28px;
       color: var(--text);
       line-height: 1.2;
-      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+      text-wrap: balance;
     }
     .section-sub {
       font-size: 15px;
       color: var(--text-muted);
-      margin-bottom: 24px;
+      margin-top: -12px;
+      margin-bottom: 28px;
       max-width: 64ch;
     }
 
@@ -453,7 +451,7 @@
       background: var(--white);
       border: 1.5px solid var(--brand-light);
       border-radius: var(--radius-md);
-      padding: 18px 20px;
+      padding: 20px 22px;
       margin-bottom: 12px;
       cursor: pointer;
       transition: border-color 140ms ease, background 140ms ease, box-shadow 140ms ease;
@@ -483,7 +481,7 @@
     .check-item[aria-checked="true"] .check-box { background: var(--green-dark); border-color: var(--green-dark); }
     .check-box svg { width: 14px; height: 14px; opacity: 0; transition: opacity 120ms ease; }
     .check-item[aria-checked="true"] .check-box svg { opacity: 1; }
-    .check-body { flex: 1; }
+    .check-body { flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
     .check-text {
       font-size: 15px;
       line-height: 1.55;
@@ -493,7 +491,6 @@
     .check-item[aria-checked="true"] .check-text { color: var(--text-muted); }
     .check-applies {
       display: inline-block;
-      margin-top: 8px;
       font-family: 'Open Sans', sans-serif;
       font-weight: 600;
       font-size: 11px;
@@ -589,7 +586,7 @@
       .card { padding: 32px 22px; box-shadow: 6px 6px 0 var(--green); }
       h1 { font-size: 28px; }
       .lede { font-size: 16px; }
-      .section { margin-top: 44px; }
+      .section { margin-top: 32px; padding-top: 32px; }
       .section-title { font-size: 22px; }
       .tool { padding: 22px; }
       .why { padding: 30px 24px; }
@@ -643,7 +640,6 @@
 
     <!-- ══ LOOKUP TOOL ══ -->
     <section class="section" id="tool" aria-labelledby="tool-title">
-      <p class="section-eyebrow">Personalize It</p>
       <h2 class="section-title" id="tool-title">What applies to your company?</h2>
       <p class="section-sub">Pick the states where you hire and enter your headcount. The table below highlights the laws triggered for you.</p>
 
@@ -684,7 +680,6 @@
 
     <!-- ══ STATE-BY-STATE TABLE ══ -->
     <section class="section" aria-labelledby="states-title">
-      <p class="section-eyebrow">By Jurisdiction</p>
       <h2 class="section-title" id="states-title">State-by-state requirements</h2>
       <p class="section-sub">Keep the source links; they go straight to each statute or bill.</p>
       <div class="table-scroll">
@@ -705,7 +700,6 @@
 
     <!-- ══ PENALTIES ══ -->
     <section class="section" aria-labelledby="pen-title">
-      <p class="section-eyebrow">Penalties</p>
       <h2 class="section-title" id="pen-title">Key penalties at a glance</h2>
       <div class="table-scroll">
         <table>
@@ -724,7 +718,6 @@
 
     <!-- ══ FEDERAL ══ -->
     <section class="section" aria-labelledby="fed-title">
-      <p class="section-eyebrow">The Federal Layer</p>
       <h2 class="section-title" id="fed-title">What still applies nationwide</h2>
       <div class="table-scroll">
         <table>
@@ -742,7 +735,6 @@
 
     <!-- ══ CHECKLIST ══ -->
     <section class="section" aria-labelledby="check-title">
-      <p class="section-eyebrow">Your Action Plan</p>
       <h2 class="section-title" id="check-title">Compliance checklist for HR teams</h2>
       <p class="section-sub">Tick items as you complete them. Your progress is saved on this device.</p>
 
