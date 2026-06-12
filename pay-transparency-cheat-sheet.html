@@ -522,16 +522,17 @@
     .why-illus {
       background: var(--brand-light);
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: center;
-      padding: 28px 20px 0;
+      padding: 24px;
     }
     .why-illus img {
       width: 100%;
-      max-width: 260px;
+      max-width: 300px;
       height: auto;
       object-fit: contain;
       display: block;
+      border-radius: var(--radius-md);
     }
     .why h2 {
       font-family: 'Open Sans', sans-serif;
@@ -609,8 +610,8 @@
       .tool { padding: 22px; }
       .why { grid-template-columns: 1fr; }
       .why-content { padding: 30px 24px; }
-      .why-illus { padding: 0 24px; }
-      .why-illus img { max-width: 200px; }
+      .why-illus { padding: 24px; }
+      .why-illus img { max-width: 260px; }
       .why h2 { font-size: 22px; }
       .btn-primary { width: 100%; }
     }
@@ -791,7 +792,7 @@
         <a class="btn-primary" href="https://www.moshjd.com/fair-and-competitive-pay-with-accurate-job-descriptions/" target="_blank" rel="noopener noreferrer">See how it works &rarr;</a>
       </div>
       <div class="why-illus" aria-hidden="true">
-        <img src="images/result-low.png" alt=""
+        <img src="images/pay-transparency-cta.png" alt=""
              onerror="this.closest('.why').classList.add('no-illus'); this.closest('.why-illus').remove();">
       </div>
     </section>

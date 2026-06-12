@@ -1,8 +1,8 @@
 <!-- Mosh JD — 2026 Pay Transparency & Compliance Cheat Sheet
      WordPress Custom HTML block (paste this whole snippet into one block).
-     1) Upload images/logo.png AND images/result-low.png to the WordPress Media Library.
+     1) Upload images/logo.png AND images/pay-transparency-cta.png to the WordPress Media Library.
      2) Replace %%LOGO_URL%% with the logo Media URL (or delete the <img> line),
-        and replace %%CTA_IMAGE_URL%% with the result-low.png Media URL.
+        and replace %%CTA_IMAGE_URL%% with the pay-transparency-cta.png Media URL.
         (If %%CTA_IMAGE_URL%% is left unset, the CTA illustration panel auto-hides
         and the closing block collapses to a single column.)
      This page is CONTENT-ONLY — no HubSpot / form wiring (by design). -->
@@ -136,8 +136,8 @@
   .mjd-paytransp .why { margin-top:56px; background:var(--navy); border-radius:var(--radius-lg); color:var(--white); position:relative; overflow:hidden; display:grid; grid-template-columns:1.35fr 0.65fr; align-items:stretch; }
   .mjd-paytransp .why.no-illus { display:block; }
   .mjd-paytransp .why-content { padding:44px; }
-  .mjd-paytransp .why-illus { background:var(--brand-light); display:flex; align-items:flex-end; justify-content:center; padding:28px 20px 0; }
-  .mjd-paytransp .why-illus img { width:100%; max-width:260px; height:auto; object-fit:contain; display:block; }
+  .mjd-paytransp .why-illus { background:var(--brand-light); display:flex; align-items:center; justify-content:center; padding:24px; }
+  .mjd-paytransp .why-illus img { width:100%; max-width:300px; height:auto; object-fit:contain; display:block; border-radius:var(--radius-md); }
   .mjd-paytransp .why h2 { font-family:'Open Sans',sans-serif; font-weight:700; font-size:26px; line-height:1.25; margin-bottom:16px; color:var(--white); max-width:30ch; }
   .mjd-paytransp .why p { font-size:16px; line-height:1.65; color:var(--brand-light); max-width:64ch; margin-bottom:18px; }
   .mjd-paytransp .why .brandname { color:var(--green); font-family:'Open Sans',sans-serif; font-weight:700; }
@@ -160,8 +160,8 @@
     .mjd-paytransp .tool { padding:22px; }
     .mjd-paytransp .why { grid-template-columns:1fr; }
     .mjd-paytransp .why-content { padding:30px 24px; }
-    .mjd-paytransp .why-illus { padding:0 24px; }
-    .mjd-paytransp .why-illus img { max-width:200px; }
+    .mjd-paytransp .why-illus { padding:24px; }
+    .mjd-paytransp .why-illus img { max-width:260px; }
     .mjd-paytransp .why h2 { font-size:22px; }
     .mjd-paytransp .btn-primary { width:100%; }
   }
