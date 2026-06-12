@@ -112,6 +112,18 @@
   .mjd-paytransp tr.row-muted td { opacity:0.5; }
   .mjd-paytransp tr.row-future .state-name::after { content:'Effective 2027'; display:block; font-family:'Open Sans',sans-serif; font-weight:700; font-size:10px; letter-spacing:0.04em; text-transform:uppercase; color:var(--amber-bg); margin-top:4px; }
   .mjd-paytransp tr.row-hidden { display:none; }
+  .mjd-paytransp .excluded-wrap { margin-top:24px; background:var(--brand-hover); border:1px solid var(--brand-hover-border); border-radius:var(--radius-md); padding:22px 22px 10px; }
+  .mjd-paytransp .excluded-head { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:16px; }
+  .mjd-paytransp .excluded-label { font-family:'Open Sans',sans-serif; font-weight:700; font-size:15px; color:var(--brand-dark); }
+  .mjd-paytransp .excluded-note { font-size:13px; color:var(--text-muted); }
+  .mjd-paytransp .excluded-wrap thead th { background:var(--periwinkle); color:var(--navy); }
+  .mjd-paytransp .excluded-wrap tbody td { color:var(--text-muted); border-bottom-color:var(--brand-hover-border); }
+  .mjd-paytransp .excluded-wrap tbody tr.alt td { background:#E6E4FB; }
+  .mjd-paytransp .excluded-wrap .state-name { color:var(--text-body); }
+  .mjd-paytransp .excluded-wrap .thresh { color:var(--text-muted); }
+  .mjd-paytransp .excluded-wrap .src-link { color:var(--brand); border-bottom-color:var(--brand-hover-border); }
+  .mjd-paytransp .excluded-wrap .src-link:hover { color:var(--brand-dark); border-color:var(--brand); }
+  .mjd-paytransp .excluded-wrap tr.row-future .state-name::after { color:var(--amber-bg); }
   .mjd-paytransp .empty-state { display:none; text-align:center; padding:40px 20px; color:var(--text-muted); font-size:15px; }
 
   .mjd-paytransp .checklist-head { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; margin-bottom:20px; }
@@ -241,13 +253,25 @@
       <section class="section" aria-labelledby="states-title">
         <h2 class="section-title" id="states-title">State-by-state requirements</h2>
         <p class="section-sub">Keep the source links; they go straight to each statute or bill.</p>
-        <div class="table-scroll">
+        <div class="table-scroll" id="states-scroll">
           <table>
             <thead><tr><th scope="col">State</th><th scope="col">Threshold</th><th scope="col">What's required</th><th scope="col">Source</th></tr></thead>
             <tbody id="states-body"></tbody>
           </table>
         </div>
         <p class="empty-state" id="states-empty">No jurisdictions match your selection. Clear the filter to see all 17.</p>
+        <div class="excluded-wrap" id="excluded-wrap" hidden>
+          <div class="excluded-head">
+            <span class="excluded-label">Not required at your headcount</span>
+            <span class="excluded-note" id="excluded-note"></span>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th scope="col">State</th><th scope="col">Threshold</th><th scope="col">What's required</th><th scope="col">Source</th></tr></thead>
+              <tbody id="states-excluded-body"></tbody>
+            </table>
+          </div>
+        </div>
       </section>
 
       <section class="section" aria-labelledby="pen-title">
@@ -375,25 +399,42 @@
   remoteToggle.addEventListener('click',toggleRemote);
   remoteToggle.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleRemote();} });
 
-  (function(){ var html=''; STATES.forEach(function(s,i){ html+='<tr data-abbr="'+s.abbr+'" data-min="'+s.min+'"'+(s.future?' data-future="1"':'')+' class="'+(i%2?'alt':'')+'"><td><span class="state-name">'+esc(s.name)+'</span></td><td><span class="thresh">'+esc(s.threshold)+'</span></td><td>'+esc(s.req)+'</td><td>'+srcLink(s.src,s.url)+'</td></tr>'; }); el('states-body').innerHTML=html; })();
+  function stateRowHtml(s,i,cls){ return '<tr class="'+(i%2?'alt ':'')+(cls||'')+'"><td><span class="state-name">'+esc(s.name)+'</span></td><td><span class="thresh">'+esc(s.threshold)+'</span></td><td>'+esc(s.req)+'</td><td>'+srcLink(s.src,s.url)+'</td></tr>'; }
   (function(){ var html=''; PENALTIES.forEach(function(p,i){ html+='<tr class="'+(i%2?'alt':'')+'"><td><span class="state-name">'+esc(p.state)+'</span></td><td><span class="penalty">'+esc(p.range)+'</span></td><td>'+esc(p.notes)+'</td><td>'+srcLink(p.src,p.url)+'</td></tr>'; }); el('pen-body').innerHTML=html; })();
   (function(){ var html=''; FEDERAL.forEach(function(f,i){ html+='<tr class="'+(i%2?'alt':'')+'"><td><span class="state-name">'+esc(f.law)+'</span></td><td>'+esc(f.means)+'</td><td>'+srcLink(f.src,f.url)+'</td></tr>'; }); el('fed-body').innerHTML=html; })();
 
   function render(){
     var hasSel=Object.keys(selected).length>0;
-    var rows=el('states-body').querySelectorAll('tr');
-    var visible=0, triggered=0;
-    rows.forEach(function(tr){
-      var abbr=tr.getAttribute('data-abbr'); var min=parseInt(tr.getAttribute('data-min'),10);
-      var future=tr.getAttribute('data-future')==='1';
-      tr.classList.remove('row-applies','row-muted','row-future','row-hidden');
-      if(hasSel&&!selected[abbr]){ tr.classList.add('row-hidden'); return; }
-      visible++;
-      if(future){ tr.classList.add('row-future'); return; }
-      if(headcount!==null){ if(headcount>=min){tr.classList.add('row-applies');triggered++;} else {tr.classList.add('row-muted');} }
-      else if(remote||hasSel){ tr.classList.add('row-applies'); triggered++; }
+    var split=headcount!==null;
+    var main=[], excl=[];
+    STATES.forEach(function(s){
+      if(hasSel&&!selected[s.abbr]) return;
+      if(split){
+        if(s.future) excl.push({s:s,cls:'row-future'});
+        else if(headcount>=s.min) main.push({s:s,cls:'row-applies'});
+        else excl.push({s:s,cls:''});
+      } else {
+        if(s.future) main.push({s:s,cls:'row-future'});
+        else if(remote||hasSel) main.push({s:s,cls:'row-applies'});
+        else main.push({s:s,cls:''});
+      }
     });
-    el('states-empty').style.display=(hasSel&&visible===0)?'block':'none';
+    el('states-body').innerHTML=main.map(function(o,i){return stateRowHtml(o.s,i,o.cls);}).join('');
+    el('states-excluded-body').innerHTML=excl.map(function(o,i){return stateRowHtml(o.s,i,o.cls);}).join('');
+    if(main.length===0){
+      el('states-scroll').style.display='none';
+      el('states-empty').style.display='block';
+      el('states-empty').textContent=split?('None of your selected jurisdictions are required at '+headcount+' employees. See the box below.'):'No jurisdictions match your selection. Clear the filter to see all 17.';
+    } else {
+      el('states-scroll').style.display='';
+      el('states-empty').style.display='none';
+    }
+    var exWrap=el('excluded-wrap');
+    if(excl.length>0){
+      exWrap.hidden=false;
+      el('excluded-note').textContent=excl.length+' jurisdiction'+(excl.length===1?'':'s')+' below your '+headcount+'-employee threshold or not yet in effect.';
+    } else { exWrap.hidden=true; }
+    var triggered=main.filter(function(o){return o.cls==='row-applies';}).length;
     updateSummary(hasSel,triggered);
   }
   function updateSummary(hasSel,triggered){
@@ -404,7 +445,7 @@
     if(hasSel) parts.push('in your selected states');
     if(remote) parts.push('(remote-eligible: apply the strictest rule)');
     c.textContent=triggered;
-    t.textContent='pay transparency law'+(triggered===1?'':'s')+' apply to you '+(parts.length?parts.join(' '):'across the U.S.')+'. Highlighted rows below are in scope.';
+    t.textContent='pay transparency law'+(triggered===1?'':'s')+' apply to you '+(parts.length?parts.join(' '):'across the U.S.')+(headcount!==null?'. Anything below your threshold is moved to a separate box below.':'.');
   }
 
   var STORE_KEY='moshjd_paytransp_checklist_v1';
