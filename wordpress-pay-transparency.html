@@ -1,8 +1,10 @@
 <!-- Mosh JD — 2026 Pay Transparency & Compliance Cheat Sheet
      WordPress Custom HTML block (paste this whole snippet into one block).
-     1) Upload images/logo.png to the WordPress Media Library.
-     2) Replace %%LOGO_URL%% below with the copied WordPress Media URL
-        (or delete the <img> line — the layout works without a logo).
+     1) Upload images/logo.png AND images/result-low.png to the WordPress Media Library.
+     2) Replace %%LOGO_URL%% with the logo Media URL (or delete the <img> line),
+        and replace %%CTA_IMAGE_URL%% with the result-low.png Media URL.
+        (If %%CTA_IMAGE_URL%% is left unset, the CTA illustration panel auto-hides
+        and the closing block collapses to a single column.)
      This page is CONTENT-ONLY — no HubSpot / form wiring (by design). -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -131,7 +133,11 @@
   .mjd-paytransp .check-applies { display:inline-block; font-family:'Open Sans',sans-serif; font-weight:600; font-size:11px; letter-spacing:0.04em; color:var(--brand); background:var(--brand-light); border-radius:999px; padding:3px 12px; }
   .mjd-paytransp .reset-row { margin-top:4px; }
 
-  .mjd-paytransp .why { margin-top:56px; background:var(--navy); border-radius:var(--radius-lg); padding:44px; color:var(--white); position:relative; overflow:hidden; }
+  .mjd-paytransp .why { margin-top:56px; background:var(--navy); border-radius:var(--radius-lg); color:var(--white); position:relative; overflow:hidden; display:grid; grid-template-columns:1.35fr 0.65fr; align-items:stretch; }
+  .mjd-paytransp .why.no-illus { display:block; }
+  .mjd-paytransp .why-content { padding:44px; }
+  .mjd-paytransp .why-illus { background:var(--brand-light); display:flex; align-items:flex-end; justify-content:center; padding:28px 20px 0; }
+  .mjd-paytransp .why-illus img { width:100%; max-width:260px; height:auto; object-fit:contain; display:block; }
   .mjd-paytransp .why h2 { font-family:'Open Sans',sans-serif; font-weight:700; font-size:26px; line-height:1.25; margin-bottom:16px; color:var(--white); max-width:30ch; }
   .mjd-paytransp .why p { font-size:16px; line-height:1.65; color:var(--brand-light); max-width:64ch; margin-bottom:18px; }
   .mjd-paytransp .why .brandname { color:var(--green); font-family:'Open Sans',sans-serif; font-weight:700; }
@@ -152,7 +158,10 @@
     .mjd-paytransp .section { margin-top:32px; padding-top:32px; }
     .mjd-paytransp .section-title { font-size:22px; }
     .mjd-paytransp .tool { padding:22px; }
-    .mjd-paytransp .why { padding:30px 24px; }
+    .mjd-paytransp .why { grid-template-columns:1fr; }
+    .mjd-paytransp .why-content { padding:30px 24px; }
+    .mjd-paytransp .why-illus { padding:0 24px; }
+    .mjd-paytransp .why-illus img { max-width:200px; }
     .mjd-paytransp .why h2 { font-size:22px; }
     .mjd-paytransp .btn-primary { width:100%; }
   }
@@ -273,10 +282,16 @@
       </section>
 
       <section class="why">
-        <h2>A salary range is only as defensible as the job description underneath it.</h2>
-        <p>Most state pay transparency laws require employers to post a range they "genuinely expect to pay." That expectation has to come from somewhere, and it should come from accurate, up-to-date job descriptions tied to market data. Without clean job architecture, salary ranges become guesswork and are difficult to defend to auditors or candidates.</p>
-        <p><span class="brandname">Mosh JD</span> helps HR and compensation teams maintain accurate job descriptions at scale, the foundation for every defensible salary range.</p>
-        <a class="btn-primary" href="https://www.moshjd.com/fair-and-competitive-pay-with-accurate-job-descriptions/" target="_blank" rel="noopener noreferrer">See how it works &rarr;</a>
+        <div class="why-content">
+          <h2>A salary range is only as defensible as the job description underneath it.</h2>
+          <p>Most state pay transparency laws require employers to post a range they "genuinely expect to pay." That expectation has to come from somewhere, and it should come from accurate, up-to-date job descriptions tied to market data. Without clean job architecture, salary ranges become guesswork and are difficult to defend to auditors or candidates.</p>
+          <p><span class="brandname">Mosh JD</span> helps HR and compensation teams maintain accurate job descriptions at scale, the foundation for every defensible salary range.</p>
+          <a class="btn-primary" href="https://www.moshjd.com/fair-and-competitive-pay-with-accurate-job-descriptions/" target="_blank" rel="noopener noreferrer">See how it works &rarr;</a>
+        </div>
+        <div class="why-illus" aria-hidden="true">
+          <img src="%%CTA_IMAGE_URL%%" alt=""
+               onerror="this.closest('.why').classList.add('no-illus'); this.closest('.why-illus').remove();">
+        </div>
       </section>
 
       <p class="disclaimer">Updated June 2026. <strong>Not legal advice</strong>, confirm requirements with employment counsel.</p>
