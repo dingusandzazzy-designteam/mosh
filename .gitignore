@@ -1,5 +1,8 @@
 # Project source / dev artifacts — not for deployment
 documents/
+# WordPress paste-ready embeds (project-internal; not served from the repo)
+wordpress-custom-html.html
+wordpress-pay-transparency.html
 workflow/
 plan/
 prompts/
