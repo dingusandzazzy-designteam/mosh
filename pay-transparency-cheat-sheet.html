@@ -864,21 +864,31 @@
   ──────────────────────────────────────────────────── */
   var STATES = [
     { name: 'California',     abbr: 'CA', min: 15, threshold: '15+ employees', req: "Pay scale in all job postings. SB 642 (Jan 2026): must be a 'good faith estimate.' Pay data report required for 100+ employees.", src: 'leginfo.ca.gov', url: 'https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB642' },
-    { name: 'Colorado',       abbr: 'CO', min: 1,  threshold: '1+ employees',  req: 'Salary range + benefits in every posting. Internal promotion notices required. Penalties: $500–$10,000/violation.', src: 'C.R.S. § 8-5-101', url: 'https://leg.colorado.gov/bills/sb19-085' },
-    { name: 'Connecticut',    abbr: 'CT', min: 1,  threshold: 'All employers', req: 'Pay range must be provided upon request or before/at offer. Also applies to promotions and transfers.', src: 'CT P.A. 21-30', url: 'https://www.cga.ct.gov/2021/act/pa/pdf/2021PA-00030-R00SB-00558-PA.pdf' },
-    { name: 'Hawaii',         abbr: 'HI', min: 50, threshold: '50+ employees', req: 'Hourly rate or salary range in all external postings. Effective Jan 1, 2024.', src: 'HI Act 203', url: 'https://www.capitol.hawaii.gov/sessreports/2023/sb1057_sd2_hd2.pdf' },
+    { name: 'Colorado',       abbr: 'CO', min: 1,  threshold: '1+ employees',  req: 'Salary range + benefits in every posting. Internal promotion notices required. Penalties: $500–$10,000/violation.', src: 'C.R.S. § 8-5-101', url: 'https://cdle.colorado.gov/dlss/labor-laws-by-topic/equal-pay-for-equal-work-act' },
+    { name: 'Connecticut',    abbr: 'CT', min: 1,  threshold: 'All employers', req: 'Pay range must be provided upon request or before/at offer. Also applies to promotions and transfers.', src: 'CT P.A. 21-30', url: 'https://www.cga.ct.gov/2021/ACT/PA/PDF/2021PA-00030-R00HB-06380-PA.PDF' },
+    { name: 'Hawaii',         abbr: 'HI', min: 50, threshold: '50+ employees', req: 'Hourly rate or salary range in all external postings. Effective Jan 1, 2024.', src: 'HI Act 203', url: 'https://www.capitol.hawaii.gov/sessions/session2023/bills/SB1057_CD1_.pdf' },
     { name: 'Illinois',       abbr: 'IL', min: 15, threshold: '15+ employees', req: 'Salary range + benefits description in postings. Equal Pay Registration Certificate (EPRC) required for 100+ IL employees — renew every 2 years.', src: '820 ILCS 112', url: 'https://www2.illinois.gov/idol/Laws-Rules/Pages/equal-pay-act.aspx' },
     { name: 'Maine',          abbr: 'ME', min: 1,  threshold: 'All employers', req: 'Must provide pay range upon request before/during interview.', src: '26 M.R.S. § 628', url: 'https://legislature.maine.gov/statutes/26/title26sec628.html' },
-    { name: 'Maryland',       abbr: 'MD', min: 15, threshold: '15+ employees', req: 'Wage range provided upon request to applicants. Disclosure required at time of offer.', src: 'MD SB 450', url: 'https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/sb0450?ys=2024RS' },
+    { name: 'Maryland',       abbr: 'MD', min: 15, threshold: '15+ employees', req: 'Wage range provided upon request to applicants. Disclosure required at time of offer.', src: 'MD SB 525', url: 'https://mgaleg.maryland.gov/2024RS/bills/sb/sb0525T.pdf' },
     { name: 'Massachusetts',  abbr: 'MA', min: 25, threshold: '25+ employees', req: 'Pay range in all postings. Active enforcement since 2026. EEO-1 must also be filed with the Commonwealth by Feb 1 annually.', src: 'M.G.L. c.149 §105B', url: 'https://malegislature.gov/laws/generallaws/parti/titlexxi/chapter149/section105b' },
-    { name: 'Minnesota',      abbr: 'MN', min: 30, threshold: '30+ employees', req: 'Starting salary range + benefits description in all postings. Effective Jan 1, 2025.', src: 'Minn. Stat. § 181.173', url: 'https://www.revisor.mn.gov/statutes/cite/181.173' },
+    { name: 'Minnesota',      abbr: 'MN', min: 30, threshold: '30+ employees', req: 'Starting salary range + benefits description in all postings. Effective Jan 1, 2025.', src: 'Minn. Stat. § 181.173', url: 'https://www.revisor.mn.gov/bills/93/2024/0/HF/3587/versions/latest/?list=open' },
     { name: 'Nevada',         abbr: 'NV', min: 1,  threshold: 'All employers', req: 'Pay scale must be provided to applicants who request it and to current employees seeking promotion.', src: 'NRS § 613.133', url: 'https://www.leg.state.nv.us/NRS/NRS-613.html#NRS613Sec133' },
-    { name: 'New Jersey',     abbr: 'NJ', min: 1,  threshold: 'All employers', req: 'Hourly rate or salary range in all job postings. Active enforcement began 2026.', src: 'NJ A4128', url: 'https://www.njleg.state.nj.us/Bills/2022/A4000/4128_I1.pdf' },
+    { name: 'New Jersey',     abbr: 'NJ', min: 1,  threshold: 'All employers', req: 'Hourly rate or salary range in all job postings. Active enforcement began 2026.', src: 'N.J.S.A. 34:6B-23', url: 'https://www.nj.gov/labor/myworkrights/wages/pay-transparency/' },
     { name: 'New York',       abbr: 'NY', min: 4,  threshold: '4+ employees',  req: 'Salary/hourly range in all postings. Applies where role can be performed in NY. NYC adds pay data reporting for 200+ employees.', src: 'Labor Law § 194-b', url: 'https://www.nysenate.gov/legislation/laws/LAB/194-B' },
-    { name: 'Rhode Island',   abbr: 'RI', min: 1,  threshold: 'All employers', req: 'Wage range upon applicant request and at time of offer.', src: 'R.I.G.L. § 28-6-22', url: 'https://law.justia.com/codes/rhode-island/title-28/chapter-28-6/section-28-6-22/' },
+    { name: 'Ohio',           abbr: 'OH', min: 15, threshold: '15+ employees',
+      req: 'Dependent on city. Disclose Pay Ranges: include the minimum and maximum salary on all job postings (including remote, promotions, and transfers), or provide it upon request after a conditional offer. Ban Salary History: you cannot ask applicants about past pay, use public records to find it, or use it to screen candidates and determine compensation.',
+      reqHtml: 'Dependent on city. <strong>Disclose Pay Ranges:</strong> you must include the minimum and maximum salary on all job postings (including remote, promotions, and transfers), or provide it upon request after a conditional offer. <strong>Ban Salary History:</strong> you cannot ask applicants about past pay, use public records to find it, or use it to screen candidates and determine compensation.',
+      sources: [
+        { name: 'Cincinnati', url: 'https://www.cincinnati-oh.gov/cityofcincinnati/equity-in-cincinnati/city-of-cincinnati-s-salary-equity-ordinance/' },
+        { name: 'Cleveland',  url: 'https://cityofcleveland.legistar.com/LegislationDetail.aspx?ID=7103557&GUID=E45B9F67-8D0D-495E-B8B7-70218CD3B789&G=2EB18EF1-2C21-4D1D-85C9-B38100AB8FFD&Options=ID|Text|Attachments|&Search=104' },
+        { name: 'Columbus',   url: 'https://columbus.legistar.com/LegislationDetail.aspx?ID=6049069&GUID=5751054E-6C9F-4B8C-8CB9-12703D38024F&FullText=1' },
+        { name: 'Toledo',     url: 'https://toledo.legistar.com/LegislationDetail.aspx?ID=3911922&GUID=F109B51B-1960-4700-AF21-B45D77BAF464&Options=&Search=&FullText=1' }
+      ] },
+    { name: 'Rhode Island',   abbr: 'RI', min: 1,  threshold: 'All employers', req: 'Wage range upon applicant request and at time of offer.', src: 'RI S0270', url: 'https://legiscan.com/RI/text/S0270/id/2420672' },
     { name: 'Vermont',        abbr: 'VT', min: 1,  threshold: 'All employers', req: 'Wage range upon request by applicant or employee. Effective July 1, 2025.', src: '21 V.S.A. § 495m', url: 'https://legislature.vermont.gov/statutes/section/21/005/00495m' },
+    { name: 'Virginia',       abbr: 'VA', min: 15, threshold: '15+ employees', req: 'Mandatory good-faith wage or salary range disclosure on all job postings, paired with a total ban on seeking applicant salary history. Effective July 1, 2026.', src: 'HB 636 / SB 215', url: 'https://lis.virginia.gov/bill-details/20261/SB215' },
     { name: 'Washington',     abbr: 'WA', min: 15, threshold: '15+ employees', req: 'Salary range + benefits in all postings. 2025 amendment added a notice-and-cure period before penalties apply.', src: 'RCW 49.58', url: 'https://app.leg.wa.gov/rcw/default.aspx?cite=49.58' },
-    { name: 'Washington D.C.', abbr: 'DC', min: 1, threshold: 'All employers', req: 'Pay range must be disclosed in job postings or upon request. Applies broadly.', src: 'D.C. Law 23-112', url: 'https://code.dccouncil.gov/us/dc/council/laws/23-112' },
+    { name: 'Washington D.C.', abbr: 'DC', min: 1, threshold: 'All employers', req: 'Pay range must be disclosed in job postings or upon request. Applies broadly.', src: 'B25-0194', url: 'https://lims.dccouncil.gov/Legislation/B25-0194' },
     { name: 'Delaware',       abbr: 'DE', min: 25, threshold: '25+ employees', future: true, req: 'Good-faith pay range in postings. Signed Sept 2025 — EFFECTIVE Sept 26, 2027. Start building ranges now.', src: 'DE HB 25', url: 'https://legis.delaware.gov/BillDetail?LegislationId=140702' }
   ];
 
@@ -970,12 +980,22 @@
   });
 
   /* ── State row builder (render() distributes rows into two tables) ── */
+  function srcCell(s) {
+    // Some jurisdictions (e.g. Ohio) are governed at the city level and carry
+    // multiple sources. `s.sources` (array of {name,url}) overrides the single src/url.
+    if (s.sources && s.sources.length) {
+      return s.sources.map(function (x) { return srcLink(x.name, x.url); }).join(' ');
+    }
+    return srcLink(s.src, s.url);
+  }
   function stateRowHtml(s, i, cls) {
+    // `reqHtml` lets an authored row carry inline markup (e.g. <strong> sub-labels);
+    // everything else stays escaped.
     return '<tr class="' + (i % 2 ? 'alt ' : '') + (cls || '') + '">' +
       '<td><span class="state-name">' + esc(s.name) + '</span></td>' +
       '<td><span class="thresh">' + esc(s.threshold) + '</span></td>' +
-      '<td>' + esc(s.req) + '</td>' +
-      '<td>' + srcLink(s.src, s.url) + '</td>' +
+      '<td>' + (s.reqHtml || esc(s.req)) + '</td>' +
+      '<td>' + srcCell(s) + '</td>' +
       '</tr>';
   }
 
