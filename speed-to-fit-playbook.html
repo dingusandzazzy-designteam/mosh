@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Speed-to-Fit Playbook — Mosh JD</title>
+  <meta name="description" content="Four plays for talent acquisition leaders tired of choosing between hiring fast and hiring right, plus a 60-second reality check for your team.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Questrial&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* ── Official Mosh JD palette ── */
+      --navy:               #030354;
+      --brand:              #5146FC;
+      --brand-light:        #DCDAFE;
+      --brand-hover:        #EEEDFF;
+      --brand-hover-border: #C5C0FF;
+      --brand-dark:         #4138CF;
+      --periwinkle:         #8985E8;
+      --green:              #90ED7D;
+      --green-dark:         #5DA54E;
+      --green-light:        #E7FBE3;
+
+      --text:        var(--navy);
+      --text-body:   #1D1D75;
+      --text-muted:  #5050B8;
+      --white:       #FFFFFF;
+
+      --shadow:    10px 10px 0 var(--green);
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+
+      --footer-h: 76px;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      font-family: 'Questrial', sans-serif;
+      background: var(--brand-light);
+      color: var(--text-body);
+      line-height: 1.5;
+      height: 100dvh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: var(--brand); }
+
+    /* ════════════════════════════════════
+       DECK SHELL — everything above the footer
+    ════════════════════════════════════ */
+    .deck {
+      flex: 1 1 auto;
+      min-height: 0;
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 22px 24px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* ── Top brand row ── */
+    .brandrow {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex: 0 0 auto;
+    }
+    .brandrow img { height: 34px; width: auto; display: block; }
+    .kicker {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brand);
+      background: var(--white);
+      border: 1.5px solid var(--brand-hover-border);
+      border-radius: 999px;
+      padding: 6px 14px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      flex: 0 0 auto;
+      display: grid;
+      grid-template-columns: 1.55fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+    .hero h1 {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 700;
+      font-size: clamp(26px, 3.4vw, 40px);
+      line-height: 1.08;
+      letter-spacing: -0.015em;
+      color: var(--text);
+      text-wrap: balance;
+      margin-bottom: 12px;
+    }
+    .hero p.lede {
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--text-muted);
+      max-width: 56ch;
+    }
+
+    /* Stat aside — carries "that shortcut is expensive" + the 9% stat */
+    .stat {
+      background: var(--navy);
+      color: var(--white);
+      border-radius: var(--radius-md);
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 6px 6px 0 var(--brand);
+    }
+    .stat .expensive {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--brand-light);
+    }
+    .stat .figure {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 1.45;
+      color: var(--white);
+    }
+    .stat .figure a {
+      color: var(--green);
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid var(--green-dark);
+    }
+    .stat .figure a:hover { color: var(--white); border-color: var(--green); }
+    .stat .figure a:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 3px; }
+
+    /* ── Bridge line (the thesis that leads into the plays) ── */
+    .bridge {
+      flex: 0 0 auto;
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--navy);
+      background: var(--brand-hover);
+      border: 1.5px solid var(--brand-hover-border);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+    }
+    .bridge strong { font-family: 'Open Sans', sans-serif; font-weight: 700; }
+
+    /* ════════════════════════════════════
+       TAB NAV
+    ════════════════════════════════════ */
+    .tablist {
+      flex: 0 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .tab {
+      appearance: none;
+      font-family: 'Open Sans', sans-serif;
+      text-align: left;
+      background: var(--white);
+      border: 2px solid var(--navy);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      cursor: pointer;
+      color: var(--navy);
+      transition: transform 140ms cubic-bezier(0.22,1,0.36,1), box-shadow 140ms cubic-bezier(0.22,1,0.36,1), background 140ms ease, color 140ms ease;
+      box-shadow: 3px 3px 0 var(--brand-hover-border);
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
+    }
+    .tab .tnum {
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--brand);
+    }
+    .tab .tname {
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .tab:hover { transform: translate(-1px,-1px); box-shadow: 5px 5px 0 var(--brand-hover-border); }
+    .tab[aria-selected="true"] {
+      background: var(--navy);
+      color: var(--white);
+      box-shadow: 5px 5px 0 var(--green);
+      transform: translate(-1px,-1px);
+    }
+    .tab[aria-selected="true"] .tnum { color: var(--green); }
+    .tab:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+
+    /* ════════════════════════════════════
+       STAGE — the active play swaps in place
+    ════════════════════════════════════ */
+    .stage {
+      flex: 1 1 auto;
+      min-height: 0;
+      position: relative;
+    }
+    .play {
+      position: absolute;
+      inset: 0;
+      background: var(--white);
+      border: 2px solid var(--navy);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 30px 34px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: opacity 260ms cubic-bezier(0.22,1,0.36,1), transform 260ms cubic-bezier(0.22,1,0.36,1);
+    }
+    .play.is-active {
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+    }
+    .play:focus-visible { outline: 3px solid var(--brand); outline-offset: -3px; }
+
+    .play-head { display: flex; align-items: flex-start; gap: 18px; flex: 0 0 auto; }
+    .play-num {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 700;
+      font-size: 46px;
+      line-height: 0.9;
+      color: var(--brand-light);
+      -webkit-text-stroke: 1.5px var(--brand);
+      flex: 0 0 auto;
+    }
+    .play-titles { display: flex; flex-direction: column; gap: 6px; }
+    .play-eyebrow {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brand);
+    }
+    .play h2 {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 700;
+      font-size: clamp(22px, 2.4vw, 30px);
+      line-height: 1.1;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .play-hook {
+      flex: 0 0 auto;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 600;
+      font-size: 17px;
+      line-height: 1.4;
+      color: var(--brand-dark);
+      max-width: 68ch;
+    }
+
+    .play-body { flex: 1 1 auto; }
+
+    /* Single-column bullet plays (01, 04) */
+    ul.plays-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    ul.plays-list li {
+      position: relative;
+      padding-left: 30px;
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--text-body);
+      max-width: 92ch;
+    }
+    ul.plays-list li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 7px;
+      width: 14px; height: 14px;
+      border-radius: 4px;
+      background: var(--green);
+      border: 2px solid var(--navy);
+    }
+    ul.plays-list li strong,
+    .col-list li strong { font-family: 'Open Sans', sans-serif; font-weight: 700; color: var(--navy); }
+    ul.plays-list li a, .col-list li a, .play-hook a {
+      color: var(--brand); font-weight: 700; text-decoration: none; border-bottom: 1.5px solid var(--brand-hover-border);
+    }
+    ul.plays-list li a:hover, .col-list li a:hover { color: var(--brand-dark); border-color: var(--brand); }
+    ul.plays-list li a:focus-visible, .col-list li a:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 3px; }
+
+    /* Two-column plays (02, 03) */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .col-card {
+      background: var(--brand-hover);
+      border: 1.5px solid var(--brand-hover-border);
+      border-radius: var(--radius-md);
+      padding: 20px 22px;
+    }
+    .col-card.warn { background: #FBF0F0; border-color: #F0C7C7; }
+    .col-head {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--navy);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .col-card.warn .col-head { color: #A23B3B; }
+    .col-head .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--green-dark); flex: 0 0 auto; }
+    .col-card.warn .col-head .dot { background: #C0504D; }
+    .col-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .col-list li {
+      position: relative;
+      padding-left: 22px;
+      font-size: 14.5px;
+      line-height: 1.5;
+      color: var(--text-body);
+    }
+    .col-list li::before {
+      content: '';
+      position: absolute;
+      left: 2px; top: 8px;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--green-dark);
+    }
+    .col-card.warn .col-list li::before { background: #C0504D; }
+
+    /* Bottom line — the payoff */
+    .bottomline {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: var(--radius-md);
+      padding: 16px 22px;
+    }
+    .bottomline .bl-label {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      flex: 0 0 auto;
+      white-space: nowrap;
+    }
+    .bottomline .bl-text {
+      font-size: 15.5px;
+      line-height: 1.45;
+      color: var(--white);
+    }
+
+    /* ════════════════════════════════════
+       FIXED FOOTER — persistent on every tab
+    ════════════════════════════════════ */
+    .footer {
+      flex: 0 0 auto;
+      height: var(--footer-h);
+      background: var(--navy);
+      border-top: 2px solid var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 0 clamp(16px, 4vw, 40px);
+      position: relative;
+      z-index: 30;
+    }
+    .rc-trigger {
+      appearance: none;
+      background: transparent;
+      border: 2px solid var(--periwinkle);
+      color: var(--white);
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: var(--radius-sm);
+      padding: 11px 18px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 140ms ease, border-color 140ms ease;
+    }
+    .rc-trigger:hover { background: rgba(137,133,232,0.22); border-color: var(--brand-light); }
+    .rc-trigger:focus-visible { outline: 3px solid var(--green); outline-offset: 2px; }
+    .rc-trigger .chev {
+      display: inline-block;
+      transition: transform 220ms cubic-bezier(0.22,1,0.36,1);
+      font-size: 12px;
+    }
+    .rc-trigger[aria-expanded="true"] .chev { transform: rotate(180deg); }
+    .rc-trigger .badge {
+      font-size: 12px;
+      font-weight: 700;
+      background: var(--green);
+      color: var(--navy);
+      border-radius: 999px;
+      padding: 2px 9px;
+      min-width: 22px;
+      text-align: center;
+    }
+    .rc-trigger .badge.is-flag { background: #FFD166; }
+
+    .footer-cta { display: flex; align-items: center; gap: 16px; min-width: 0; }
+    .footer-note {
+      font-size: 12.5px;
+      color: var(--brand-light);
+      max-width: 30ch;
+      line-height: 1.35;
+    }
+    .btn-primary {
+      background: var(--green);
+      color: var(--navy);
+      border: 2px solid var(--green);
+      padding: 13px 26px;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      display: inline-block;
+      white-space: nowrap;
+      transition: background 140ms ease, transform 140ms ease, box-shadow 140ms ease, color 140ms ease;
+      line-height: 1;
+      box-shadow: 4px 4px 0 var(--brand);
+    }
+    .btn-primary:hover { background: var(--green-dark); color: var(--white); transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--brand); }
+    .btn-primary:active { transform: translate(2px,2px); box-shadow: 0 0 0 var(--brand); }
+    .btn-primary:focus-visible { outline: 3px solid var(--green); outline-offset: 3px; }
+
+    /* ════════════════════════════════════
+       REALITY CHECK — slide-up sheet
+    ════════════════════════════════════ */
+    .rc-scrim {
+      position: fixed;
+      inset: 0;
+      background: rgba(3,3,84,0.42);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 240ms ease;
+      z-index: 20;
+    }
+    .rc-scrim.is-open { opacity: 1; pointer-events: auto; }
+
+    .rc-panel {
+      position: fixed;
+      left: 50%;
+      bottom: var(--footer-h);
+      transform: translate(-50%, 110%);
+      width: min(760px, calc(100% - 32px));
+      max-height: min(70vh, 560px);
+      background: var(--white);
+      border: 2px solid var(--navy);
+      border-bottom: none;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      box-shadow: 0 -12px 40px rgba(3,3,84,0.28);
+      z-index: 25;
+      transition: transform 320ms cubic-bezier(0.22,1,0.36,1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .rc-panel.is-open { transform: translate(-50%, 0); }
+
+    .rc-header {
+      flex: 0 0 auto;
+      padding: 22px 26px 14px;
+      border-bottom: 1px solid var(--brand-light);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .rc-header h2 {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--text);
+      line-height: 1.15;
+    }
+    .rc-header p { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
+    .rc-close {
+      appearance: none;
+      background: var(--brand-light);
+      border: none;
+      color: var(--navy);
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      flex: 0 0 auto;
+      line-height: 1;
+      transition: background 140ms ease;
+    }
+    .rc-close:hover { background: var(--brand-hover-border); }
+    .rc-close:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+    .rc-body { flex: 1 1 auto; overflow-y: auto; padding: 18px 26px; }
+    .rc-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: var(--white);
+      border: 1.5px solid var(--brand-light);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: border-color 140ms ease, background 140ms ease, box-shadow 140ms ease;
+    }
+    .rc-item:hover:not([aria-checked="true"]) { border-color: var(--brand-hover-border); background: var(--brand-hover); }
+    .rc-item[aria-checked="true"] {
+      background: var(--green-light);
+      border-color: var(--green-dark);
+      box-shadow: 3px 3px 0 var(--green);
+    }
+    .rc-item:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+    .rc-box {
+      width: 22px; height: 22px;
+      flex: 0 0 auto;
+      border: 2px solid var(--navy);
+      border-radius: 6px;
+      background: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 1px;
+      transition: background 140ms ease, border-color 140ms ease;
+    }
+    .rc-item[aria-checked="true"] .rc-box { background: var(--green-dark); border-color: var(--green-dark); }
+    .rc-box svg { width: 13px; height: 13px; opacity: 0; transition: opacity 120ms ease; }
+    .rc-item[aria-checked="true"] .rc-box svg { opacity: 1; }
+    .rc-text { font-size: 14.5px; line-height: 1.5; color: var(--text); }
+    .rc-item[aria-checked="true"] .rc-text { color: var(--text-muted); }
+
+    .rc-verdict {
+      flex: 0 0 auto;
+      border-top: 1px solid var(--brand-light);
+      padding: 16px 26px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--brand-hover);
+    }
+    .rc-count {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--navy);
+      background: var(--white);
+      border: 1.5px solid var(--brand-hover-border);
+      border-radius: 999px;
+      padding: 6px 14px;
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+    .rc-verdict-text {
+      font-size: 15px;
+      line-height: 1.4;
+      color: var(--text-muted);
+      font-family: 'Questrial', sans-serif;
+    }
+    .rc-verdict.is-flagged { background: var(--navy); }
+    .rc-verdict.is-flagged .rc-count { background: var(--green); border-color: var(--green); color: var(--navy); }
+    .rc-verdict.is-flagged .rc-verdict-text {
+      color: var(--white);
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 700;
+    }
+    .rc-reset {
+      background: none; border: none;
+      font-family: 'Questrial', sans-serif;
+      font-size: 13px; color: var(--text-muted);
+      text-decoration: underline; cursor: pointer;
+      margin-left: auto; flex: 0 0 auto; padding: 4px 0;
+    }
+    .rc-reset:hover { color: var(--brand); }
+    .rc-verdict.is-flagged .rc-reset { color: var(--brand-light); }
+    .rc-reset:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 4px; }
+
+    .sr-only {
+      position: absolute; width:1px; height:1px;
+      padding:0; margin:-1px; overflow:hidden;
+      clip:rect(0,0,0,0); white-space:nowrap; border:0;
+    }
+
+    /* ════════════════════════════════════
+       RESPONSIVE — release the zero-scroll lock
+    ════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; gap: 16px; }
+      .tablist { grid-template-columns: 1fr 1fr; }
+      .tab .tname { white-space: normal; }
+    }
+
+    @media (max-width: 760px), (max-height: 620px) {
+      body { height: auto; overflow: visible; }
+      .deck { padding: 20px 16px; gap: 14px; }
+      .stage { min-height: 0; }
+      .play {
+        position: static;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+        display: none;
+        overflow: visible;
+      }
+      .play.is-active { display: flex; }
+      .two-col { grid-template-columns: 1fr; }
+      .footer {
+        position: sticky;
+        bottom: 0;
+        flex-wrap: wrap;
+        height: auto;
+        padding: 12px 16px;
+        gap: 12px;
+      }
+      .footer-note { display: none; }
+      .rc-panel {
+        bottom: 0;
+        max-height: 82vh;
+        width: 100%;
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .tablist { grid-template-columns: 1fr; }
+      .footer-cta { width: 100%; }
+      .btn-primary { flex: 1 1 auto; text-align: center; }
+      .rc-trigger { flex: 1 1 auto; justify-content: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+      .play { transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Shared check glyph -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-check" viewBox="0 0 16 16">
+    <path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+</svg>
+
+<main class="deck">
+
+  <!-- ══ Brand row ══ -->
+  <div class="brandrow">
+    <img src="images/logo.png" alt="Mosh JD" onerror="this.style.display='none'">
+    <span class="kicker">The Speed-to-Fit Playbook &middot; 4 Plays</span>
+  </div>
+
+  <!-- ══ Hero ══ -->
+  <section class="hero" aria-label="Introduction">
+    <div>
+      <h1>Speed and Fit Are the Same Problem</h1>
+      <p class="lede">
+        Talent acquisition leaders get told to do two things that feel like opposites: fill the seat
+        fast, and find the right person. So most teams default to speed. The job description becomes
+        whatever was on file last time, lightly edited, quickly reposted.
+      </p>
+    </div>
+    <aside class="stat">
+      <p class="expensive">That shortcut is expensive. It just doesn't show up on the recruiting dashboard.</p>
+      <p class="figure">
+        Fewer than <a href="https://zety.com/blog/hr-statistics#job-search-statistics" target="_blank" rel="noopener noreferrer">9%</a>
+        of career site visitors convert into applicants. The job description is usually the reason they don't.
+      </p>
+    </aside>
+  </section>
+
+  <!-- ══ Bridge / thesis into the plays ══ -->
+  <p class="bridge">
+    <strong>Here's the part that gets missed:</strong> speed and fit aren't actually competing goals.
+    The teams that hire fastest are the ones who already fixed fit, because they aren't rewriting JDs
+    from scratch, chasing feedback over email, or interviewing candidates who never understood the role
+    or don't possess the skills the company actually needs. Fix the job description process, and both
+    problems shrink at once.
+  </p>
+
+  <!-- ══ Tab nav ══ -->
+  <div class="tablist" role="tablist" aria-label="The four plays">
+    <button class="tab" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true"  tabindex="0">
+      <span class="tnum">PLAY 01</span><span class="tname">Cut the Wish List</span>
+    </button>
+    <button class="tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1">
+      <span class="tnum">PLAY 02</span><span class="tname">Choose Your Filter</span>
+    </button>
+    <button class="tab" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" tabindex="-1">
+      <span class="tnum">PLAY 03</span><span class="tname">Let AI Draft, Never Decide</span>
+    </button>
+    <button class="tab" role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false" tabindex="-1">
+      <span class="tnum">PLAY 04</span><span class="tname">Kill the Bottlenecks</span>
+    </button>
+  </div>
+
+  <!-- ══ Stage ══ -->
+  <div class="stage">
+
+    <!-- PLAY 01 -->
+    <section class="play is-active" role="tabpanel" id="panel-1" aria-labelledby="tab-1" tabindex="0">
+      <div class="play-head">
+        <span class="play-num" aria-hidden="true">01</span>
+        <div class="play-titles">
+          <span class="play-eyebrow">Play 01</span>
+          <h2>Cut the Wish List</h2>
+        </div>
+      </div>
+      <p class="play-hook">Every unnecessary requirement is a candidate who never clicks apply.</p>
+      <div class="play-body">
+        <ul class="plays-list">
+          <li><strong>Keep only true requirements.</strong> Move everything else to "preferred," or cut it. Research from <a href="https://hbr.org/2014/08/why-women-dont-apply-for-jobs-unless-theyre-100-qualified" target="_blank" rel="noopener noreferrer">Harvard Business Review</a> found women, in particular, tend to apply only when they meet every listed qualification. A long wish list filters out strong candidates before a recruiter ever sees them.</li>
+          <li><strong>Translate the jargon.</strong> If a requirement only makes sense inside your own walls, a candidate outside those walls will skip right past it.</li>
+          <li><strong>Trade years for capability.</strong> "5+ years" is a proxy, not a requirement. Ask for the actual skill you need instead.</li>
+          <li><strong>Scrub the loaded language.</strong> Words like "aggressive" or "ninja" skew male. Phrases like "digital native" skew young. Cut both.</li>
+        </ul>
+      </div>
+      <div class="bottomline">
+        <span class="bl-label">Bottom line</span>
+        <span class="bl-text">An honest, specific job description attracts more of the right candidates than an exhaustive one ever will.</span>
+      </div>
+    </section>
+
+    <!-- PLAY 02 -->
+    <section class="play" role="tabpanel" id="panel-2" aria-labelledby="tab-2" tabindex="0" hidden>
+      <div class="play-head">
+        <span class="play-num" aria-hidden="true">02</span>
+        <div class="play-titles">
+          <span class="play-eyebrow">Play 02</span>
+          <h2>Choose Your Filter</h2>
+        </div>
+      </div>
+      <p class="play-hook">Skills and competencies are not the same thing, and mixing them up is a quiet source of bad fit.</p>
+      <div class="play-body">
+        <div class="two-col">
+          <div class="col-card">
+            <div class="col-head"><span class="dot" aria-hidden="true"></span>Lead with skills when</div>
+            <ul class="col-list">
+              <li>The role is highly technical or tool-specific (engineering, design, finance ops)</li>
+              <li>You need to widen the funnel fast, one widely cited study found shifting from qualifications to skills more than doubled an organization's talent pool</li>
+              <li>The tools and tasks aren't likely to change soon</li>
+            </ul>
+          </div>
+          <div class="col-card">
+            <div class="col-head"><span class="dot" aria-hidden="true"></span>Lead with competencies when</div>
+            <ul class="col-list">
+              <li>The role is leadership, client-facing, or cross-functional</li>
+              <li>The work itself will keep evolving</li>
+              <li>Judgment, adaptability, and communication matter as much as any single tool</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="bottomline">
+        <span class="bl-label">Bottom line</span>
+        <span class="bl-text">Match the model to the role. Don't force every job through the same lens.</span>
+      </div>
+    </section>
+
+    <!-- PLAY 03 -->
+    <section class="play" role="tabpanel" id="panel-3" aria-labelledby="tab-3" tabindex="0" hidden>
+      <div class="play-head">
+        <span class="play-num" aria-hidden="true">03</span>
+        <div class="play-titles">
+          <span class="play-eyebrow">Play 03</span>
+          <h2>Let AI Draft, Never Decide</h2>
+        </div>
+      </div>
+      <p class="play-hook">AI is a legitimate shortcut for the time problem when used the right way.</p>
+      <div class="play-body">
+        <div class="two-col">
+          <div class="col-card">
+            <div class="col-head"><span class="dot" aria-hidden="true"></span>Where it earns its keep</div>
+            <ul class="col-list">
+              <li>Scanning hundreds of job titles to flag duplicates and overlap</li>
+              <li>Drafting a first pass at a skills section</li>
+              <li>Benchmarking your roles against what competitors are posting</li>
+            </ul>
+          </div>
+          <div class="col-card warn">
+            <div class="col-head"><span class="dot" aria-hidden="true"></span>Where it quietly backfires</div>
+            <ul class="col-list">
+              <li>Reproducing the same biased language it was trained on</li>
+              <li>Hallucinating stats, quotes, or requirements with total confidence, a widely cited industry study found a meaningful share of AI chat outputs contain fabricated information</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="bottomline">
+        <span class="bl-label">Bottom line</span>
+        <span class="bl-text">AI buys back time. A human protects the brand and the legal exposure. Skip the second part, and the first one doesn't matter.</span>
+      </div>
+    </section>
+
+    <!-- PLAY 04 -->
+    <section class="play" role="tabpanel" id="panel-4" aria-labelledby="tab-4" tabindex="0" hidden>
+      <div class="play-head">
+        <span class="play-num" aria-hidden="true">04</span>
+        <div class="play-titles">
+          <span class="play-eyebrow">Play 04</span>
+          <h2>Kill the Manual Bottlenecks</h2>
+        </div>
+      </div>
+      <p class="play-hook">If a new job description still starts with an old Word doc, the slow part of hiring isn't the interview stage.</p>
+      <div class="play-body">
+        <ul class="plays-list">
+          <li><strong>Start from a template, not a blank page.</strong> A library of approved boilerplate turns JD creation into fill-in-the-blank, cutting time from request to posting from days to hours.</li>
+          <li><strong>Collect feedback in one place.</strong> A login-free feedback link beats chasing hiring managers and legal through email threads that stall out.</li>
+          <li><strong>Make org-wide changes in minutes, not weeks.</strong> When a policy update needs to touch hundreds of roles, doing it by hand can cost a team a week or more. The fix isn't writing faster, it's removing the busywork between knowing what needs to change and getting it live.</li>
+        </ul>
+      </div>
+      <div class="bottomline">
+        <span class="bl-label">Bottom line</span>
+        <span class="bl-text">The fastest hiring teams aren't writing better job descriptions one at a time. They've removed the manual work standing between them and posting.</span>
+      </div>
+    </section>
+
+  </div><!-- /.stage -->
+</main>
+
+<!-- ══ Fixed footer ══ -->
+<footer class="footer">
+  <button type="button" class="rc-trigger" id="rc-trigger" aria-expanded="false" aria-controls="rc-panel">
+    <span>The Reality Check</span>
+    <span class="badge" id="rc-badge">0/6</span>
+    <span class="chev" aria-hidden="true">&#9650;</span>
+  </button>
+  <div class="footer-cta">
+    <span class="footer-note">Centralize, write, and govern job descriptions at scale, without trading away speed or fit.</span>
+    <a class="btn-primary" href="https://www.moshjd.com" target="_blank" rel="noopener noreferrer">Book a demo with Mosh JD</a>
+  </div>
+</footer>
+
+<!-- ══ Reality Check sheet ══ -->
+<div class="rc-scrim" id="rc-scrim" hidden></div>
+<section class="rc-panel" id="rc-panel" role="dialog" aria-modal="false" aria-labelledby="rc-title" hidden>
+  <div class="rc-header">
+    <div>
+      <h2 id="rc-title">The Reality Check</h2>
+      <p>A 60-second read on where your team actually stands. Check what's true for your team right now.</p>
+    </div>
+    <button type="button" class="rc-close" id="rc-close" aria-label="Close the reality check">&times;</button>
+  </div>
+  <div class="rc-body" id="rc-body" role="group" aria-labelledby="rc-title"><!-- items injected --></div>
+  <div class="rc-verdict" id="rc-verdict">
+    <span class="rc-count" id="rc-count">0 of 6 checked</span>
+    <span class="rc-verdict-text" id="rc-verdict-text">Check the boxes that sound like your team.</span>
+    <button type="button" class="rc-reset" id="rc-reset">Reset</button>
+  </div>
+</section>
+
+<script>
+(function () {
+  function el(id) { return document.getElementById(id); }
+
+  /* ────────────────────────────────────────────────
+     TABS — roving tabindex + arrow-key navigation
+  ──────────────────────────────────────────────────── */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+  var panels = tabs.map(function (t) { return el(t.getAttribute('aria-controls')); });
+
+  function selectTab(idx, setFocus) {
+    tabs.forEach(function (t, i) {
+      var on = i === idx;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.setAttribute('tabindex', on ? '0' : '-1');
+      panels[i].hidden = false;                      // keep in DOM; toggle visual state
+      panels[i].classList.toggle('is-active', on);
+      if (!on) { panels[i].setAttribute('hidden', ''); }
+    });
+    if (setFocus) tabs[idx].focus();
+  }
+
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener('click', function () { selectTab(i, false); });
+    tab.addEventListener('keydown', function (e) {
+      var last = tabs.length - 1, next = null;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = i === last ? 0 : i + 1;
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = i === 0 ? last : i - 1;
+      else if (e.key === 'Home') next = 0;
+      else if (e.key === 'End') next = last;
+      if (next !== null) { e.preventDefault(); selectTab(next, true); }
+    });
+  });
+  selectTab(0, false);
+
+  /* ────────────────────────────────────────────────
+     REALITY CHECK — slide-up sheet + localStorage
+  ──────────────────────────────────────────────────── */
+  var ITEMS = [
+    "We rebuild job descriptions from scratch almost every time, copying and tweaking whatever we can find.",
+    "A single policy or compliance change means manually touching dozens, or hundreds of documents.",
+    "We don't have a clear rule for skills versus competencies; we just write what feels right for the role.",
+    "Stakeholder feedback happens over email threads that stall out or get lost.",
+    "Nobody reviews job descriptions for biased or exclusionary language before they go live.",
+    "Our job descriptions read like legal disclaimers instead of something a candidate wants to apply to."
+  ];
+  var VERDICT = "Checked two or more? Your job description process, not your recruiters, is the bottleneck.";
+  var PROMPT  = "Check the boxes that sound like your team.";
+  var STORE_KEY = 'moshjd_speedtofit_realitycheck_v1';
+
+  var state = loadState();
+  function loadState() {
+    try {
+      var raw = window.localStorage.getItem(STORE_KEY);
+      if (!raw) return {};
+      var parsed = JSON.parse(raw);
+      return (parsed && typeof parsed === 'object') ? parsed : {};
+    } catch (e) { return {}; }
+  }
+  function saveState() {
+    try { window.localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {}
+  }
+
+  var body = el('rc-body');
+  ITEMS.forEach(function (text, i) {
+    var div = document.createElement('div');
+    div.className = 'rc-item';
+    div.setAttribute('role', 'checkbox');
+    div.setAttribute('tabindex', '0');
+    div.setAttribute('aria-checked', state[i] ? 'true' : 'false');
+    div.innerHTML =
+      '<span class="rc-box" aria-hidden="true"><svg><use href="#i-check"/></svg></span>' +
+      '<span class="rc-text"></span>';
+    div.querySelector('.rc-text').textContent = text;
+    function toggle() {
+      var on = div.getAttribute('aria-checked') === 'true';
+      div.setAttribute('aria-checked', on ? 'false' : 'true');
+      if (on) { delete state[i]; } else { state[i] = true; }
+      saveState(); updateVerdict();
+    }
+    div.addEventListener('click', toggle);
+    div.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+    body.appendChild(div);
+  });
+
+  function countChecked() {
+    var n = 0; for (var k in state) { if (state[k]) n++; } return n;
+  }
+  function updateVerdict() {
+    var n = countChecked();
+    var flagged = n >= 2;
+    el('rc-count').textContent = n + ' of ' + ITEMS.length + ' checked';
+    el('rc-badge').textContent = n + '/' + ITEMS.length;
+    el('rc-badge').classList.toggle('is-flag', flagged);
+    el('rc-verdict').classList.toggle('is-flagged', flagged);
+    el('rc-verdict-text').textContent = flagged ? VERDICT : PROMPT;
+  }
+
+  el('rc-reset').addEventListener('click', function () {
+    state = {}; saveState();
+    Array.prototype.forEach.call(body.children, function (d) { d.setAttribute('aria-checked', 'false'); });
+    updateVerdict();
+  });
+
+  /* Open / close the sheet */
+  var trigger = el('rc-trigger'), panel = el('rc-panel'), scrim = el('rc-scrim');
+  function openRC() {
+    panel.hidden = false; scrim.hidden = false;
+    // allow the browser to paint the hidden->shown state before transitioning
+    requestAnimationFrame(function () {
+      panel.classList.add('is-open'); scrim.classList.add('is-open');
+    });
+    trigger.setAttribute('aria-expanded', 'true');
+    var first = body.querySelector('.rc-item');
+    if (first) first.focus();
+  }
+  function closeRC(returnFocus) {
+    panel.classList.remove('is-open'); scrim.classList.remove('is-open');
+    trigger.setAttribute('aria-expanded', 'false');
+    window.setTimeout(function () { panel.hidden = true; scrim.hidden = true; }, 320);
+    if (returnFocus !== false) trigger.focus();
+  }
+  function isOpen() { return trigger.getAttribute('aria-expanded') === 'true'; }
+
+  trigger.addEventListener('click', function () { isOpen() ? closeRC() : openRC(); });
+  el('rc-close').addEventListener('click', function () { closeRC(); });
+  scrim.addEventListener('click', function () { closeRC(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && isOpen()) closeRC();
+  });
+
+  updateVerdict();
+})();
+</script>
+
+</body>
+</html>
