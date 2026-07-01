@@ -34,7 +34,7 @@
       --radius-md: 12px;
       --radius-sm: 8px;
 
-      --footer-h: 76px;
+      --footer-h: 66px;
     }
 
     html { font-size: 16px; }
@@ -61,10 +61,10 @@
       width: 100%;
       max-width: 1140px;
       margin: 0 auto;
-      padding: 22px 24px 18px;
+      padding: 16px 24px 12px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
     }
 
     /* ── Top brand row ── */
@@ -94,24 +94,24 @@
       flex: 0 0 auto;
       display: grid;
       grid-template-columns: 1.55fr 1fr;
-      gap: 24px;
+      gap: 20px;
       align-items: stretch;
     }
     .hero h1 {
       font-family: 'Open Sans', sans-serif;
       font-weight: 700;
-      font-size: clamp(26px, 3.4vw, 40px);
+      font-size: clamp(22px, 2.8vw, 32px);
       line-height: 1.08;
       letter-spacing: -0.015em;
       color: var(--text);
       text-wrap: balance;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
     .hero p.lede {
-      font-size: 16px;
-      line-height: 1.55;
+      font-size: 14px;
+      line-height: 1.45;
       color: var(--text-muted);
-      max-width: 56ch;
+      max-width: none;
     }
 
     /* Stat aside — carries "that shortcut is expensive" + the 9% stat */
@@ -119,23 +119,23 @@
       background: var(--navy);
       color: var(--white);
       border-radius: var(--radius-md);
-      padding: 20px 22px;
+      padding: 16px 18px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 10px;
+      gap: 8px;
       box-shadow: 6px 6px 0 var(--brand);
     }
     .stat .expensive {
-      font-size: 14px;
-      line-height: 1.5;
+      font-size: 13px;
+      line-height: 1.4;
       color: var(--brand-light);
     }
     .stat .figure {
       font-family: 'Open Sans', sans-serif;
       font-weight: 700;
-      font-size: 15px;
-      line-height: 1.45;
+      font-size: 13.5px;
+      line-height: 1.4;
       color: var(--white);
     }
     .stat .figure a {
@@ -150,13 +150,13 @@
     /* ── Bridge line (the thesis that leads into the plays) ── */
     .bridge {
       flex: 0 0 auto;
-      font-size: 15px;
-      line-height: 1.55;
+      font-size: 13px;
+      line-height: 1.4;
       color: var(--navy);
       background: var(--brand-hover);
       border: 1.5px solid var(--brand-hover-border);
       border-radius: var(--radius-md);
-      padding: 14px 18px;
+      padding: 10px 16px;
     }
     .bridge strong { font-family: 'Open Sans', sans-serif; font-weight: 700; }
 
@@ -167,7 +167,7 @@
       flex: 0 0 auto;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
+      gap: 8px;
     }
     .tab {
       appearance: none;
@@ -176,7 +176,7 @@
       background: var(--white);
       border: 2px solid var(--navy);
       border-radius: var(--radius-sm);
-      padding: 12px 16px;
+      padding: 9px 14px;
       cursor: pointer;
       color: var(--navy);
       transition: transform 140ms cubic-bezier(0.22,1,0.36,1), box-shadow 140ms cubic-bezier(0.22,1,0.36,1), background 140ms ease, color 140ms ease;
@@ -194,7 +194,7 @@
     }
     .tab .tname {
       font-weight: 700;
-      font-size: 15px;
+      font-size: 14px;
       line-height: 1.2;
       white-space: nowrap;
       overflow: hidden;
@@ -225,7 +225,7 @@
       border: 2px solid var(--navy);
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow);
-      padding: 30px 34px;
+      padding: 24px 28px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
@@ -242,11 +242,11 @@
     }
     .play:focus-visible { outline: 3px solid var(--brand); outline-offset: -3px; }
 
-    .play-head { display: flex; align-items: flex-start; gap: 18px; flex: 0 0 auto; }
+    .play-head { display: flex; align-items: flex-start; gap: 14px; flex: 0 0 auto; }
     .play-num {
       font-family: 'Open Sans', sans-serif;
       font-weight: 700;
-      font-size: 46px;
+      font-size: 36px;
       line-height: 0.9;
       color: var(--brand-light);
       -webkit-text-stroke: 1.5px var(--brand);
@@ -264,7 +264,7 @@
     .play h2 {
       font-family: 'Open Sans', sans-serif;
       font-weight: 700;
-      font-size: clamp(22px, 2.4vw, 30px);
+      font-size: clamp(20px, 2vw, 26px);
       line-height: 1.1;
       color: var(--text);
       letter-spacing: -0.01em;
@@ -273,28 +273,28 @@
       flex: 0 0 auto;
       font-family: 'Open Sans', sans-serif;
       font-weight: 600;
-      font-size: 17px;
+      font-size: 16px;
       line-height: 1.4;
       color: var(--brand-dark);
-      max-width: 68ch;
+      max-width: 74ch;
     }
 
-    .play-body { flex: 1 1 auto; }
+    .play-body { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; }
 
     /* Single-column bullet plays (01, 04) */
-    ul.plays-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    ul.plays-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
     ul.plays-list li {
       position: relative;
-      padding-left: 30px;
-      font-size: 15px;
+      padding-left: 28px;
+      font-size: 14.5px;
       line-height: 1.55;
       color: var(--text-body);
-      max-width: 92ch;
+      max-width: none;
     }
     ul.plays-list li::before {
       content: '';
       position: absolute;
-      left: 0; top: 7px;
+      left: 0; top: 6px;
       width: 14px; height: 14px;
       border-radius: 4px;
       background: var(--green);
@@ -309,20 +309,20 @@
     ul.plays-list li a:focus-visible, .col-list li a:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 3px; }
 
     /* Two-column plays (02, 03) */
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     .col-card {
       background: var(--brand-hover);
       border: 1.5px solid var(--brand-hover-border);
       border-radius: var(--radius-md);
-      padding: 20px 22px;
+      padding: 16px 18px;
     }
     .col-card.warn { background: #FBF0F0; border-color: #F0C7C7; }
     .col-head {
       font-family: 'Open Sans', sans-serif;
       font-weight: 700;
-      font-size: 15px;
+      font-size: 14px;
       color: var(--navy);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -334,14 +334,14 @@
     .col-list li {
       position: relative;
       padding-left: 22px;
-      font-size: 14.5px;
+      font-size: 14px;
       line-height: 1.5;
       color: var(--text-body);
     }
     .col-list li::before {
       content: '';
       position: absolute;
-      left: 2px; top: 8px;
+      left: 2px; top: 7px;
       width: 8px; height: 8px;
       border-radius: 50%;
       background: var(--green-dark);
@@ -353,11 +353,11 @@
       flex: 0 0 auto;
       display: flex;
       align-items: baseline;
-      gap: 14px;
+      gap: 12px;
       background: var(--navy);
       color: var(--white);
       border-radius: var(--radius-md);
-      padding: 16px 22px;
+      padding: 12px 18px;
     }
     .bottomline .bl-label {
       font-family: 'Open Sans', sans-serif;
@@ -370,8 +370,8 @@
       white-space: nowrap;
     }
     .bottomline .bl-text {
-      font-size: 15.5px;
-      line-height: 1.45;
+      font-size: 14.5px;
+      line-height: 1.4;
       color: var(--white);
     }
 
@@ -431,7 +431,7 @@
     .footer-note {
       font-size: 12.5px;
       color: var(--brand-light);
-      max-width: 30ch;
+      max-width: 48ch;
       line-height: 1.35;
     }
     .btn-primary {
@@ -618,7 +618,7 @@
       .tab .tname { white-space: normal; }
     }
 
-    @media (max-width: 760px), (max-height: 620px) {
+    @media (max-width: 760px), (max-height: 700px) {
       body { height: auto; overflow: visible; }
       .deck { padding: 20px 16px; gap: 14px; }
       .stage { min-height: 0; }
