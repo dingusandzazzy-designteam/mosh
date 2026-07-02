@@ -3,6 +3,7 @@ documents/
 # WordPress paste-ready embeds (project-internal; not served from the repo)
 wordpress-custom-html.html
 wordpress-pay-transparency.html
+wordpress-speed-to-fit.html
 workflow/
 plan/
 prompts/
