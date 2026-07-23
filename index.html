@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mosh JD — Interactive Tools & Resources</title>
-  <meta name="description" content="Interactive tools and resources from Mosh JD for HR and compensation teams — job description audits, pay transparency compliance, and more.">
+  <title>Mosh JD — Deliverables Hub</title>
+  <meta name="description" content="Internal hub for the interactive tools and resources Dingus & Zazzy has built for Mosh JD.">
+  <meta name="robots" content="noindex, nofollow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Questrial&display=swap" rel="stylesheet">
@@ -29,8 +30,11 @@
       --text-muted:  #5050B8;
       --white:       #FFFFFF;
 
-      --shadow:    10px 10px 0 var(--green);
-      --radius-lg: 16px;
+      /* brand v2 — soft neutral shadows, no colored offset blocks */
+      --shadow-sm: 0 2px 8px rgba(3,3,84,0.06);
+      --shadow-md: 0 10px 30px rgba(3,3,84,0.08);
+      --shadow-lg: 0 20px 50px rgba(3,3,84,0.10);
+      --radius-lg: 18px;
       --radius-md: 12px;
       --radius-sm: 8px;
     }
@@ -95,7 +99,7 @@
       background: var(--white);
       border: 2px solid var(--navy);
       border-radius: var(--radius-lg);
-      box-shadow: 8px 8px 0 var(--green);
+      box-shadow: var(--shadow-md);
       text-decoration: none;
       color: inherit;
       overflow: hidden;
@@ -103,14 +107,14 @@
       position: relative;
     }
     .project-card:hover {
-      transform: translate(-3px, -3px);
-      box-shadow: 12px 12px 0 var(--green);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
     }
     .project-card:focus-visible {
       outline: 3px solid var(--brand);
       outline-offset: 3px;
     }
-    .project-card:active { transform: translate(2px, 2px); box-shadow: 4px 4px 0 var(--green); }
+    .project-card:active { transform: translateY(0); box-shadow: var(--shadow-sm); }
 
     /* Icon tile header */
     .card-tile {
@@ -229,9 +233,9 @@
     </div>
 
     <header class="hero">
-      <p class="eyebrow">Interactive Tools &amp; Resources</p>
-      <h1>Built for HR &amp; Compensation Teams</h1>
-      <p>Free, interactive tools from Mosh JD to help you audit job descriptions, stay compliant, and build defensible pay.</p>
+      <p class="eyebrow">Dingus &amp; Zazzy &times; Mosh JD</p>
+      <h1>Deliverables built for Mosh JD</h1>
+      <p>A working hub for the interactive tools and resources we've produced for Mosh JD. Open any card to view the finished asset.</p>
     </header>
 
     <main class="grid">
@@ -297,7 +301,7 @@
     </main>
 
     <footer class="hub-footer">
-      <p>A resource hub by <a href="https://www.moshjd.com/" target="_blank" rel="noopener noreferrer">Mosh JD</a> for accurate job descriptions at scale.</p>
+      <p>Internal deliverables hub &middot; Dingus &amp; Zazzy for <a href="https://www.moshjd.com/" target="_blank" rel="noopener noreferrer">Mosh JD</a>.</p>
     </footer>
 
   </div>
