@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mosh JD — Sitemap &amp; SEO Report</title>
+  <meta name="description" content="Sitemap audit, the 2,490-vs-100 diagnosis, before/after results, and a prioritized SEO growth roadmap for Mosh JD.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Questrial&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:               #030354;
+      --brand:              #5146FC;
+      --brand-light:        #DCDAFE;
+      --brand-hover:        #EEEDFF;
+      --brand-hover-border: #C5C0FF;
+      --brand-dark:         #4138CF;
+      --periwinkle:         #8985E8;
+      --green:              #90ED7D;
+      --green-dark:         #5DA54E;
+      --green-light:        #E7FBE3;
+
+      --amber:       #F8AE00;
+      --amber-light: #FFF3D6;
+
+      --text:        var(--navy);
+      --text-body:   #1D1D75;
+      --text-muted:  #5050B8;
+      --white:       #FFFFFF;
+
+      /* brand v2 — soft neutral shadows, no colored offset blocks */
+      --shadow-sm: 0 2px 8px rgba(3,3,84,0.06);
+      --shadow-md: 0 10px 30px rgba(3,3,84,0.08);
+      --shadow-lg: 0 20px 50px rgba(3,3,84,0.10);
+
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Questrial', sans-serif;
+      background: var(--brand-light);
+      color: var(--text-body);
+      line-height: 1.55;
+      padding: 48px 20px 72px;
+    }
+
+    .wrapper { width: 100%; max-width: 940px; margin: 0 auto; }
+
+    h1, h2, h3, .num, .kicker, .tag, .cta, th, .metric-val, .stat-num {
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    /* ── Top bar ── */
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; margin-bottom: 34px; flex-wrap: wrap;
+    }
+    .topbar img { height: 40px; width: auto; display: block; }
+    .topbar .doc-meta {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 12px; font-weight: 600; color: var(--text-muted);
+      text-align: right; line-height: 1.5;
+    }
+
+    /* ── Hero / verdict ── */
+    .hero {
+      background: var(--navy);
+      color: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 44px 44px 40px;
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 20px;
+    }
+    .kicker {
+      display: inline-block;
+      font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-weight: 800; font-size: clamp(28px, 4.4vw, 42px); line-height: 1.1;
+      letter-spacing: -0.015em; color: var(--white); text-wrap: balance; margin-bottom: 18px;
+    }
+    .hero h1 .hl { color: var(--green); }
+    .hero p {
+      font-size: 17px; line-height: 1.6; color: #C9C7F5; max-width: 62ch; text-wrap: pretty;
+    }
+
+    /* ── Section shell ── */
+    section { margin-top: 44px; }
+    .sec-head { margin-bottom: 20px; }
+    .sec-head .eyebrow {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--brand); margin-bottom: 8px;
+    }
+    .sec-head h2 {
+      font-weight: 800; font-size: clamp(22px, 3vw, 28px); line-height: 1.15;
+      color: var(--text); letter-spacing: -0.01em; text-wrap: balance;
+    }
+    .sec-head p.sub { font-size: 16px; color: var(--text-muted); margin-top: 8px; max-width: 68ch; }
+
+    .card {
+      background: var(--white);
+      border: 2px solid var(--navy);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      padding: 30px 32px;
+    }
+    .card + .card { margin-top: 18px; }
+
+    p.body { font-size: 16px; line-height: 1.65; margin-bottom: 14px; }
+    p.body:last-child { margin-bottom: 0; }
+    strong { color: var(--text); font-weight: 700; }
+
+    /* ── Host breakdown bars ── */
+    .bars { display: flex; flex-direction: column; gap: 14px; margin-top: 6px; }
+    .bar-row { display: grid; grid-template-columns: 210px 1fr; gap: 14px; align-items: center; }
+    .bar-label { font-size: 14px; }
+    .bar-label .host { font-family: 'Open Sans', sans-serif; font-weight: 700; color: var(--text); }
+    .bar-label .what { display: block; font-size: 12.5px; color: var(--text-muted); }
+    .bar-track { background: var(--brand-light); border-radius: 999px; height: 30px; position: relative; overflow: hidden; }
+    .bar-fill {
+      height: 100%; border-radius: 999px; display: flex; align-items: center;
+      padding: 0 12px; color: var(--white); font-family: 'Open Sans', sans-serif;
+      font-weight: 700; font-size: 13px; white-space: nowrap;
+    }
+    .bar-fill.f-news  { background: var(--brand); }
+    .bar-fill.f-www   { background: var(--green-dark); }
+    .bar-fill.f-min   { background: var(--periwinkle); }
+    .bar-fill.tiny    { color: var(--text); padding-left: 8px; }
+
+    .callout {
+      margin-top: 22px; background: var(--green-light);
+      border: 2px solid var(--green-dark); border-radius: var(--radius-md);
+      padding: 18px 20px; font-size: 15.5px; line-height: 1.6;
+    }
+    .callout .lead { font-family: 'Open Sans', sans-serif; font-weight: 800; color: var(--green-dark); }
+
+    /* ── Before / after metrics ── */
+    .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .metric {
+      background: var(--white); border: 2px solid var(--navy);
+      border-radius: var(--radius-md); box-shadow: var(--shadow-sm); padding: 20px 22px;
+    }
+    .metric .label {
+      font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 12px;
+      letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px;
+    }
+    .metric .row { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+    .metric .before { font-size: 15px; color: var(--text-muted); text-decoration: line-through; }
+    .metric .arrow { color: var(--brand); font-weight: 700; }
+    .metric-val { font-weight: 800; font-size: 30px; line-height: 1; color: var(--navy); }
+    .metric .delta {
+      display: inline-block; margin-top: 12px;
+      font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 12.5px;
+      color: var(--green-dark); background: var(--green-light);
+      border-radius: 999px; padding: 3px 10px;
+    }
+    .metric .delta.up { color: var(--green-dark); }
+
+    /* ── Tiers ── */
+    .tier { display: grid; grid-template-columns: 56px 1fr; gap: 20px; }
+    .tier + .tier { margin-top: 18px; }
+    .tier .num {
+      width: 56px; height: 56px; border-radius: var(--radius-md);
+      background: var(--brand); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 22px; flex: 0 0 auto;
+    }
+    .tier.t2 .num { background: var(--periwinkle); }
+    .tier.t3 .num { background: var(--green-dark); }
+    .tier.t4 .num { background: var(--navy); }
+    .tier h3 { font-weight: 800; font-size: 19px; color: var(--text); margin-bottom: 4px; }
+    .tier .goal {
+      font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 13px;
+      color: var(--brand-dark); margin-bottom: 12px;
+    }
+    .tier ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .tier li { position: relative; padding-left: 26px; font-size: 15px; line-height: 1.55; }
+    .tier li::before {
+      content: ""; position: absolute; left: 0; top: 8px;
+      width: 14px; height: 14px; border-radius: 4px;
+      background: var(--green); border: 1.5px solid var(--green-dark);
+    }
+    .tier li b { color: var(--text); font-family: 'Open Sans', sans-serif; font-weight: 700; }
+    .tier li .fixes {
+      font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 11.5px;
+      color: var(--brand); background: var(--brand-light);
+      border-radius: 999px; padding: 2px 9px; margin-left: 4px; white-space: nowrap;
+    }
+
+    /* ── Flags ── */
+    .flags { display: flex; flex-direction: column; gap: 12px; }
+    .flag {
+      display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start;
+      background: var(--amber-light); border: 2px solid var(--amber);
+      border-radius: var(--radius-md); padding: 16px 18px;
+    }
+    .flag.info { background: var(--brand-hover); border-color: var(--brand-hover-border); }
+    .flag .ico { font-size: 18px; line-height: 1.4; }
+    .flag .txt { font-size: 15px; line-height: 1.55; }
+    .flag .txt b { font-family: 'Open Sans', sans-serif; color: var(--text); }
+
+    /* ── Insight banner ── */
+    .insight {
+      background: var(--brand); color: var(--white);
+      border-radius: var(--radius-lg); padding: 30px 34px; box-shadow: var(--shadow-md);
+    }
+    /* ── Download button ── */
+    .dl {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 15px;
+      color: var(--navy); background: var(--green);
+      border: 2px solid var(--green); border-radius: 999px;
+      padding: 12px 22px; text-decoration: none; margin-top: 26px;
+      transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
+    }
+    .dl:hover { background: #A6F196; box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .dl:active { transform: translateY(0); }
+    .dl svg { width: 18px; height: 18px; flex: 0 0 auto; }
+    .dl .meta { font-weight: 600; font-size: 12.5px; color: var(--green-dark); }
+
+    .insight .eyebrow { color: var(--green); }
+    .insight h2 { color: var(--white); font-weight: 800; font-size: 24px; line-height: 1.2; margin: 8px 0 12px; }
+    .insight p { font-size: 16px; line-height: 1.65; color: #E7E6FF; }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 54px; padding-top: 24px; border-top: 1.5px solid var(--brand-hover-border);
+      text-align: center; font-size: 13.5px; color: var(--text-muted);
+    }
+    footer a { color: var(--brand); font-weight: 600; text-decoration: none; }
+
+    @media (max-width: 640px) {
+      body { padding: 32px 14px 56px; }
+      .hero { padding: 30px 24px; }
+      .card { padding: 24px 20px; }
+      .bar-row { grid-template-columns: 1fr; gap: 6px; }
+      .tier { grid-template-columns: 44px 1fr; gap: 14px; }
+      .tier .num { width: 44px; height: 44px; font-size: 18px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+
+    <div class="topbar">
+      <img src="../../images/logo.png" alt="Mosh JD" onerror="this.style.display='none'">
+      <div class="doc-meta">
+        Sitemap &amp; SEO Report<br>
+        Prepared for Wellington Coelho · July 23, 2026
+      </div>
+    </div>
+
+    <!-- ── HERO / VERDICT ── -->
+    <div class="hero">
+      <span class="kicker">The 2,490-vs-100 question, answered</span>
+      <h1>Your website is healthy. The scary number was <span class="hl">the newsletter</span>, not a bug.</h1>
+      <p>Semrush was counting <strong style="color:#fff">2,490+ URLs</strong> because its audit was set to crawl the whole domain — including the beehiiv newsletter subdomain. The website itself has ~200 real pages, the sitemap is clean, and Google indexes exactly what it should. We reconfigured the audit; the report now reflects reality.</p>
+      <a class="dl" href="../semrush/Semrush-Site_Audit__Full_Report-www_moshjd_com-23rd_Jul_2026.pdf" download>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 3v12m0 0l-4-4m4 4l4-4" stroke="#030354" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M4 17v2a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-2" stroke="#030354" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Download the full Semrush report
+        <span class="meta">PDF</span>
+      </a>
+    </div>
+
+    <!-- ── WHERE THE 2,490 CAME FROM ── -->
+    <section>
+      <div class="sec-head">
+        <p class="eyebrow">The diagnosis</p>
+        <h2>Where the 2,490 actually came from</h2>
+        <p class="sub">Pulled straight from Semrush's own crawled-URL export (2,671 URLs), grouped by which hostname they live on.</p>
+      </div>
+      <div class="card">
+        <div class="bars">
+          <div class="bar-row">
+            <div class="bar-label"><span class="host">newsletter.moshjd.com</span><span class="what">beehiiv newsletter — a separate platform</span></div>
+            <div class="bar-track"><div class="bar-fill f-news" style="width:90%">2,402 · 90%</div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label"><span class="host">www.moshjd.com</span><span class="what">the actual website</span></div>
+            <div class="bar-track"><div class="bar-fill f-www" style="width:9.4%">252</div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label"><span class="host">moshjd.com</span><span class="what">non-www redirects</span></div>
+            <div class="bar-track"><div class="bar-fill f-min tiny" style="width:3%">14</div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label"><span class="host">app.moshjd.com</span><span class="what">product login/app</span></div>
+            <div class="bar-track"><div class="bar-fill f-min tiny" style="width:2%">3</div></div>
+          </div>
+        </div>
+        <div class="callout">
+          <span class="lead">No backend bug. No ghost pages.</span> Semrush's own data confirms Google won't index the excess: only <strong>204 URLs are unique real pages</strong> — the other 2,412 are duplicates that point their canonical tag back to the real page. The gap between Semrush (2,490) and Google (~100) is <strong>crawler scope, not an indexability problem.</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BEFORE / AFTER ── -->
+    <section>
+      <div class="sec-head">
+        <p class="eyebrow">What we changed</p>
+        <h2>Before → after, in one re-crawl</h2>
+        <p class="sub">We turned off subdomain crawling and pointed the audit at the sitemap. The sitemap itself needed no changes — it was already clean and correct.</p>
+      </div>
+      <div class="metrics">
+        <div class="metric">
+          <div class="label">Pages crawled</div>
+          <div class="row"><span class="before">2,670</span><span class="arrow">→</span><span class="metric-val">201</span></div>
+          <span class="delta">real site, finally</span>
+        </div>
+        <div class="metric">
+          <div class="label">Site Health</div>
+          <div class="row"><span class="before">76%</span><span class="arrow">→</span><span class="metric-val">84%</span></div>
+          <span class="delta up">▲ 8 points</span>
+        </div>
+        <div class="metric">
+          <div class="label">Warnings</div>
+          <div class="row"><span class="before">7,730</span><span class="arrow">→</span><span class="metric-val">330</span></div>
+          <span class="delta">−7,400</span>
+        </div>
+        <div class="metric">
+          <div class="label">Errors</div>
+          <div class="row"><span class="before">115</span><span class="arrow">→</span><span class="metric-val">22</span></div>
+          <span class="delta">−93</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── THE INSIGHT ── -->
+    <section>
+      <div class="insight">
+        <p class="eyebrow" style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;">Why the next part is cheap and high-leverage</p>
+        <h2>Nearly every remaining issue is template-level, not per-page.</h2>
+        <p>The site runs on WordPress + Elementor + All in One SEO. A handful of fixes — in the post template, the <em>/freedownloads/</em> template, the schema block, and the footer — cascade across 20 to 190 pages each. That means a fast, visible win instead of a page-by-page slog.</p>
+      </div>
+    </section>
+
+    <!-- ── STRATEGY ── -->
+    <section>
+      <div class="sec-head">
+        <p class="eyebrow">The roadmap</p>
+        <h2>How we take Health from 84% to 92%+ — and then grow traffic</h2>
+      </div>
+
+      <div class="card">
+        <div class="tier t1">
+          <div class="num">1</div>
+          <div>
+            <h3>Technical quick wins</h3>
+            <p class="goal">~1 week · template-level · Health 84% → ~92%+, errors 22 → ~2</p>
+            <ul>
+              <li><b>Fix the structured-data schema</b> — the <em>SoftwareApplication</em> block emits empty rating/review/offers fields <span class="fixes">clears 20 errors</span></li>
+              <li><b>Repair heading structure in the post template</b> — skipped H1/heading levels <span class="fixes">~80 pages</span></li>
+              <li><b>Differentiate H1 from title</b> in the post template <span class="fixes">62 pages</span></li>
+              <li><b>Add H1s to the /freedownloads/ &amp; legal templates</b> <span class="fixes">21 pages</span></li>
+              <li><b>Trim long titles</b> to ≤60 chars &amp; fix the footer HTTP link <span class="fixes">32 pages</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tier t2">
+          <div class="num">2</div>
+          <div>
+            <h3>Index &amp; sitemap hygiene</h3>
+            <p class="goal">Keep only pages that should rank in the index</p>
+            <ul>
+              <li>Drop <b>sitemap.rss</b> from robots.txt &amp; fix the one non-canonical URL in the sitemap</li>
+              <li><b>noindex + de-list</b> low-value/duplicate pages (old-faqs, phone-popup, thank-you, roi-calculator, dupe management page)</li>
+              <li>Set <b>app.moshjd.com</b> to noindex (dev-agency change)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tier t3">
+          <div class="num">3</div>
+          <div>
+            <h3>On-page SEO &amp; growth</h3>
+            <p class="goal">The revenue lever — where rankings and traffic actually move</p>
+            <ul>
+              <li><b>Internal linking pass</b> — 34 pages have only one incoming link; route authority to money pages &amp; new posts</li>
+              <li><b>Keyword-rich anchors</b> — replace "Learn More / Read More / click here" (54 links)</li>
+              <li><b>Optimize the commercial posts first</b> — Mosh JD vs. JDxpert / SHRM / Payscale, pricing, ROI</li>
+              <li><b>Topical clusters</b> across the 131 blog posts — compounding authority in the "job description" niche</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tier t4">
+          <div class="num">4</div>
+          <div>
+            <h3>Ongoing monitoring</h3>
+            <p class="goal">Keep the gains and catch regressions early</p>
+            <ul>
+              <li>Monthly Semrush audit, scope locked to www.moshjd.com</li>
+              <li>Position tracking on target keywords + a content calendar</li>
+              <li>Quarterly technical re-check</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FLAGS ── -->
+    <section>
+      <div class="sec-head">
+        <p class="eyebrow">For the record</p>
+        <h2>Flags &amp; notes</h2>
+      </div>
+      <div class="flags">
+        <div class="flag">
+          <span class="ico">⚑</span>
+          <span class="txt"><b>app.moshjd.com</b> returns HTTP 200 for any path and is fully open to crawlers. It isn't the source of the 2,490, but it should be set to <b>noindex</b> — a development-agency change, not WordPress.</span>
+        </div>
+        <div class="flag info">
+          <span class="ico">ℹ︎</span>
+          <span class="txt"><b>The newsletter stays indexable.</b> The beehiiv pages are real and usually meant to be found — we simply stopped counting them as website pages. Excluding them from search is a beehiiv-side setting, only if the client wants it.</span>
+        </div>
+        <div class="flag info">
+          <span class="ico">✓</span>
+          <span class="txt"><b>Google Search Console.</b> Final step of the original task: confirm the indexed count, resubmit the sitemap, and screenshot the "Success" status — pending Full Permission access.</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Prepared by the Dingus &amp; Zazzy team for <a href="https://www.moshjd.com/" target="_blank" rel="noopener noreferrer">Mosh JD</a> · Sitemap Optimization · July 2026</p>
+    </footer>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+Independent crawl reproduction of www.moshjd.com (Node BFS, 2026-07-23)
+Reproduces what a crawler like Semrush discovers. Scripts: crawl.mjs (discovery),
+crawl2.mjs (categorization). Crawl stopped at 1,023 URLs (bounded) and was still
+climbing — a full crawl reaches Semrush's ~2,490 easily.
+
+DISCOVERED URL BREAKDOWN (total discovered 1,023):
+    199  real page/post          <- the real site (matches ~193 sitemap URLs)
+    505  wp-json REST/oembed      <- WordPress API endpoints (2 oembed variants per page)
+    165  ?p= shortlink (301)      <- WP shortlinks, 301-redirect to canonical
+    140  feed                     <- per-post RSS feeds (X-Robots: noindex)
+     13  ?e-page= Elementor       <- Elementor widget pagination params (/resources/?e-page-...=N)
+      1  other ?query
+      0  other
+
+  Clean indexable-style URLs: 199
+  Parameterized + API + redirect noise: 824  (ratio ~4:1 noise:real, and growing)
+
+CONCLUSION: The 2,490 is NOT ghost pages from a backend bug. It is standard
+WordPress + Elementor crawl surface (REST/oEmbed API, ?p= shortlink redirects,
+per-post feeds, Elementor pagination params). Google ignores all of it
+(301 consolidation, noindex, API/param handling) -> GSC shows ~100 real pages.
+Semrush Site Audit counts every crawlable URL -> ~2,490. Gap = crawler scope, not indexability.
