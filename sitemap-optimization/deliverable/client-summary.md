@@ -73,10 +73,19 @@ The re-crawled set is now **200 `www.moshjd.com` pages + 1 non-www redirect — 
 
 ---
 
-## Google Search Console
+## Google Search Console — confirmed
 
-- Access confirmation + sitemap resubmission: _[pending Full Permission access — confirm indexed count in the Pages report, resubmit `sitemap.xml`, screenshot the "Success" status]_
-- Expectation: GSC should report the sitemap as **Success** with ~193 URLs discovered, matching the real page count.
+The Coverage/Pages export (filtered to the submitted `sitemap.xml`, data through Jul 9) settles the client's question with Google's own numbers:
+
+| Metric | Value |
+|---|---|
+| Indexed | **126** |
+| Not indexed | **73** |
+| **Total** | **199** — matches the real site (Semrush re-crawl: 201; sitemap: ~193) |
+
+- **No indexability issue.** Google sees ~199 pages, nowhere near 2,490.
+- The 73 not-indexed are benign: **48 "Discovered – currently not indexed"** (queued / crawl priority — internal linking helps) and **25 "Crawled – currently not indexed"** (thin/low-value — the noindex + content-optimization candidates).
+- The sitemap is **registered and actively used** by Google (it's the source of the 126 indexed pages). A fresh "Success" screenshot on resubmission is optional confirmation; not required to answer the question.
 
 ---
 
